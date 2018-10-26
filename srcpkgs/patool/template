@@ -1,0 +1,20 @@
+# Template file for 'patool'
+pkgname=patool
+version=1.12
+revision=1
+noarch=yes
+wrksrc="patool-upstream-${version}"
+build_style=python3-module
+pycompile_module="patoolib"
+hostmakedepends="python3-setuptools"
+depends="python3"
+short_desc="Portable command line archive file manager"
+maintainer="SolitudeSF <solitudesf@protonmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://wummel.github.io/patool/"
+distfiles="https://github.com/wummel/patool/archive/upstream/${version}.tar.gz"
+checksum=582fd4b87c263325958c1550400504799018c88bc3444f249bba304ae1747f1f
+
+post_install() {
+	vinstall patool.bash-completion 644 usr/share/bash-completion/completions patool
+}
